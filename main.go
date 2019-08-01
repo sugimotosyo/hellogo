@@ -26,7 +26,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	fmt.Fprintf(w, "Hello, World %s", ips)
+	fmt.Fprintf(w, "from pipeline Hello, World %s", ips)
 }
 
 func main() {
