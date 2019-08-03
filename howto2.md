@@ -1,36 +1,19 @@
-# AWS Githubからソースを取得し、ESC(Fargate or EC2)にデプロイするパイプラインを作成する。
+# AWS Githubからソースを取得し、ESC(Fargate or EC2)にデプロイするパイプラインを作成する。（デプロイまで）
+
+前回はALBを立てるところまで行いました。
+今回は実際のソースをパイプラインでデプロイしてサブドメインでアクセスするところまで行います。
+AWS周りで難しいのはネットワーク周りと、権限周りだと思っていますが、何が難しいって、トラブルシューティングの方法がわからない。
+下記に記載しているやり方はFargateでのデプロイ方法だが、実際には、まずEC2で行い、次にECSのEC2で行い、最後にECSのFargateで行うことで、なんとか形になりました。
 
 
-概要をかく
+# 構成
+![struct.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/struct.png)
 
-経緯とかも書く
+- dbはローカルに閉じる
+- Fargeteでスケーラブルにしておく。
+- ALBでサブドメインでルーティングする。
 
 ---
-
-# やりたいこと
-
-
-# こんなことをやればできるはず
-
-1. GitHubのリポジトリを作成。
-2. AWSユーザを作成する。
-3. Route53でドメイン発行。SSLの対応も
-4. VPCとサブネットを作成する
-5. RDB周りの設定
-6. インターネットゲートウェイとルートテーブルの設定
-7. ターゲットグループの作成
-8. ALBを設定
-9. ソースの用意
-10. Dockerイメージの作成
-11. ECRに追加
-12. ECSクラスタを作成
-13. ECSのタスクを作成
-14. ECSのサービスを作成
-15. CodeBuildでBuildプロジェクトを作成
-16. Route53でサブドメインを切って、リスナーに登録する。
-17. パイプラインを作成（ソース取得）
-18. パイプラインを作成（ビルド）
-19. パイプラインを作成（ECSにデプロイ）
 
 
 # ソースの用意
@@ -283,7 +266,9 @@ EC2のサイドバーよりロードバランサを選択し、一覧上の対�
 ![host-rule3.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/host-rule3.png)
 
 
-
+# 参考
+ロールやポリシー周りでエラーになった場合はここを参考にした。とりあえず画面からぽちぽちユーザにポリシーを付与すればOK
+[CodePipeline/CodeBuild/ECR/ECS/Fargateのコンテナデプロイ基盤を構築してみました - LCL Engineers' Blog](https://techblog.lclco.com/entry/2018/10/12/170000)
 
 ---
 以上
