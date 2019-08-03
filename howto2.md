@@ -121,7 +121,7 @@ artifacts:
 # ECRリポジトリを作成
 リポジトリ名：hellogo-image-repo
 
-![ecr1.png](:storage/9b9f2a85-1d89-451e-b2e3-90c20a50b9b9/845db8e6.png)
+![ecr1.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/ecr1.png)
 
 
 # CodeBuildでビルドプロジェクトを作成
@@ -180,7 +180,7 @@ FARGATE
   イメージ：上記で作成したECRリポジトリのlatest
   ポートマッピング：8080
 
-![tg1.png](:storage/9b9f2a85-1d89-451e-b2e3-90c20a50b9b9/ef984426.png)
+![tg1.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/tg1.png)
 
 
 
@@ -214,7 +214,7 @@ FARGATE
 コンテナの選択：hellogo-containar:8080:8080
 ロードバランサーに追加をクリック
 ターゲットグループ名：web-app-tg-1
-![service1.png](:storage/9b9f2a85-1d89-451e-b2e3-90c20a50b9b9/b8848b76.png)
+![service1.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/service1.png)
 
 
 
@@ -240,13 +240,13 @@ FARGATE
 リージョン：アジアンパシフィック（東京）
 クラスタ名：hellogo-cluster
 サービス名：hellogo-service
-![pipeline1.png](:storage/9b9f2a85-1d89-451e-b2e3-90c20a50b9b9/38fb6662.png)
+![pipeline1.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/pipeline1.png)
 
 
 
 - 実行完了
 
-![pipeline2.png](:storage/9b9f2a85-1d89-451e-b2e3-90c20a50b9b9/310ab96e.png)
+![pipeline2.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/pipeline2.png)
 
 - この時点でロードバランサのDNS 名でアクセスできます。
 - 20分くらいかかってしまいました。
@@ -270,17 +270,17 @@ EC2のサイドバーよりロードバランサを選択し、一覧上の対�
 
 
 
-![host-rule1.png](:storage/9b9f2a85-1d89-451e-b2e3-90c20a50b9b9/32bc07c6.png)
+![host-rule1.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/host-rule1.png)
 
 
 - これでHTTPでアクセスした場合、問題なくhelloworldされます。
 
 - httpsも同様に設定する。
-![host-rule2.png](:storage/9b9f2a85-1d89-451e-b2e3-90c20a50b9b9/8f96f162.png)
+![host-rule2.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/host-rule2.png)
 
 
 - httpできた場合はhttpsへリダイレクトさせたいのでｈttpの設定を変更
-![host-rule3.png](:storage/9b9f2a85-1d89-451e-b2e3-90c20a50b9b9/fa32b87d.png)
+![host-rule3.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/host-rule3.png)
 
 
 

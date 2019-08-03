@@ -43,7 +43,7 @@
 ユーザ：develop-deploy
 
 ## VPC作成
-![vpc1.png](:storage/866d8c63-5717-40ff-9160-beb95e47460c/38b8041d.png)
+![vpc1.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/vpc1.png)
 
 
 
@@ -54,7 +54,7 @@ VPC:上記で作成したVPC
 アベイラビリティーゾーン：ap-northeneast-1a
 IPv4 CIDR ブロック：10.0.0.0/24
 
-![vpc-subnet1.png](:storage/866d8c63-5717-40ff-9160-beb95e47460c/2d54ad6b.png)
+![vpc-subnet1.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/vpc-subnet1.png)
 
 
 
@@ -63,7 +63,7 @@ VPC:上記で作成したVPC
 アベイラビリティーゾーン：ap-northeneast-1c
 IPv4 CIDR ブロック：10.0.1.0/24
 
-![vpc-subnet2.png](:storage/866d8c63-5717-40ff-9160-beb95e47460c/f5a3268b.png)
+![vpc-subnet2.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/vpc-subnet2.png)
 
 
 
@@ -73,7 +73,7 @@ VPC:上記で作成したVPC
 IPv4 CIDR ブロック：10.0.10.0/24
 
 
-![vpc-subnet3.png](:storage/866d8c63-5717-40ff-9160-beb95e47460c/4c351de6.png)
+![vpc-subnet3.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/vpc-subnet3.png)
 
 
 
@@ -82,7 +82,7 @@ VPC:上記で作成したVPC
 アベイラビリティーゾーン：ap-northeneast-1c
 IPv4 CIDR ブロック：10.0.11.0/24
 
-![vpc-subnet4.png](:storage/866d8c63-5717-40ff-9160-beb95e47460c/32a81145.png)
+![vpc-subnet4.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/vpc-subnet4.png)
 
 
 
@@ -94,7 +94,7 @@ IPv4 CIDR ブロック：10.0.11.0/24
 VPC：上記で作成したVPC
 ※作成後一覧よりNameにセキュリティグループ名を設定
 
-![vpc-sg1.png](:storage/866d8c63-5717-40ff-9160-beb95e47460c/779d22d0.png)
+![vpc-sg1.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/vpc-sg1.png)
 
 同様に下記設定でも作成する
 
@@ -115,7 +115,7 @@ VPC：上記で作成したVPC
 VPC：上記で作成したVPC
 ※作成後一覧よりNameにセキュリティグループ名を設定
 
-![vpc-sg2.png](:storage/866d8c63-5717-40ff-9160-beb95e47460c/d5f12b2d.png)
+![vpc-sg2.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/vpc-sg2.png)
 
 
 
@@ -123,7 +123,7 @@ VPC：上記で作成したVPC
 一覧の下部インバンンドルールのタブより追加する。
 
 web-app-lb-sg
-![vpc-sg3.png](:storage/866d8c63-5717-40ff-9160-beb95e47460c/7636ddd2.png)
+![vpc-sg3.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/vpc-sg3.png)
 
 
 
@@ -133,14 +133,14 @@ web-app-web-sg
 ポート範囲：8080
 ソース：カスタム　web-app-lb-sgのグループID
 
-![vpc-sg4.png](:storage/866d8c63-5717-40ff-9160-beb95e47460c/ac33666a.png)
+![vpc-sg4.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/vpc-sg4.png)
 
 web-app-db-sg
 タイプ：MYSQL/Aurora
 プロトコル：TCP
 ポート範囲：3306
 ソース：カスタム　web-app-web-sgのグループID
-![vpc-sg5.png](:storage/866d8c63-5717-40ff-9160-beb95e47460c/c25f6dcb.png)
+![vpc-sg5.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/vpc-sg5.png)
 
 
 
@@ -150,7 +150,7 @@ web-app-ssh-sg
 ポート範囲：22
 ソース：カスタム　0.0.0.0/0, ::/0
 ※ステップサーバー等を置いている場合はソースに適切なIPを設定してください。
-![vpc-sg6.png](:storage/866d8c63-5717-40ff-9160-beb95e47460c/723acf8e.png)
+![vpc-sg6.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/vpc-sg6.png)
 
 
 
@@ -163,7 +163,7 @@ Amazon RDSのサイドバーからサブネットグループを選択
 VPC：上記で作成したVPC
 サブネット：vpc-web-app-subnet-db-a、vpc-web-app-subnet-db-c ※サブネットIDしか出てこないのでVPCのサブネットからサブネットIDを確認して設定
 
-![db-subnet1.png](:storage/866d8c63-5717-40ff-9160-beb95e47460c/1b67a8b5.png)
+![db-subnet1.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/db-subnet1.png)
 
 
 
@@ -186,7 +186,7 @@ AZ：指定なし
 ## インターネットゲートウェイの作成
 VPCのサイドバーからインターネットゲイトウェイを選択し、作成する。
 名前タグ：web-app-igw
-![igw1.png](:storage/866d8c63-5717-40ff-9160-beb95e47460c/6589ba0f.png)
+![igw1.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/igw1.png)
 
 ## インターネットゲートウェイをVPCにアタッチする
 インターネットゲートウェイの一覧より上記で作成したインターネットゲートウェイを選択し、アクションよりVPCにアタッチする。
@@ -196,13 +196,13 @@ VPC：上記で作成したVPC
 
 名前タグ：web-app-rtb-global
 VPC：上記で作成したVPC
-![rtb1.png](:storage/866d8c63-5717-40ff-9160-beb95e47460c/e1ee18a9.png)
+![rtb1.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/rtb1.png)
 
 
 名前タグ：web-app-rtb-local
 VPC：上記で作成したVPC
 
-![rtb2.png](:storage/866d8c63-5717-40ff-9160-beb95e47460c/130cf81b.png)
+![rtb2.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/rtb2.png)
 
 
 ## ルートの設定
@@ -237,7 +237,7 @@ EC2のサイドバーからターゲットグループを選択し作成する�
 ポート：80
 VPC：上記で作成したVPC
 
-![tg1.png](:storage/866d8c63-5717-40ff-9160-beb95e47460c/cfb189e1.png)
+![tg1.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/tg1.png)
 
 
 
@@ -255,7 +255,7 @@ EC2のサイドバーからロードバランサーを選択し作成する。
 VPC：上記で作成したVPC
 アベイラビティーゾーン（ap-northeast-1a）： サブネット：vpc-web-app-subnet-web-a
 アベイラビティーゾーン（ap-northeast-1c）： サブネット：vpc-web-app-subnet-web-c
-![alb1.png](:storage/866d8c63-5717-40ff-9160-beb95e47460c/4d44560d.png)
+![alb1.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/alb1.png)
 
 ## 手順2セキュリティ設定の構成
 証明書タイプ：ACMから証明書を選択する
@@ -269,7 +269,7 @@ VPC：上記で作成したVPC
 ## 手順4ルーティングの設定
 ターゲットグループ：既存のターゲットグループ
 名前：web-app-tg-1
-![alb2.png](:storage/866d8c63-5717-40ff-9160-beb95e47460c/dfd26c64.png)
+![alb2.png](https://raw.githubusercontent.com/sugimotosyo/hellogo/master/sample-image/alb2.png)
 
 ## 手順5ターゲットの登録
 この時点ではECSインスタンスを生成していないので、登録済みのターゲットがないので、設定しない。
