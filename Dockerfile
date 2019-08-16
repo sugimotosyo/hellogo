@@ -1,8 +1,8 @@
 FROM golang:1.10.0
 
 
-WORKDIR /go
-ADD . /go
+WORKDIR /go/src
+ADD . /go/src
 
 EXPOSE  8080
 
