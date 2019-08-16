@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
+	"os"
 
 	"github.com/ChimeraCoder/anaconda"
 )
@@ -40,10 +41,12 @@ func MyTweet(w http.ResponseWriter, r *http.Request) {
 	// }
 	// fmt.Println(twt)
 
+	fmt.Fprintf(w, "MyTweet ")
+
 }
 
 func getTwitterApi() *anaconda.TwitterApi {
-	anaconda.SetConsumerKey("")
-	anaconda.SetConsumerSecret("")
-	return anaconda.NewTwitterApi("", "")
+	anaconda.SetConsumerKey(os.Getenv("TWITTER_CONSUMER_KEY"))
+	anaconda.SetConsumerSecret(os.Getenv("TWITTER_CONSUMER_SECRET"))
+	return anaconda.NewTwitterApi(os.Getenv("TWITTER_ACCESS_TOKEN"), os.Getenv("TWITTER_ACCESS_TOKEN_SECRET"))
 }

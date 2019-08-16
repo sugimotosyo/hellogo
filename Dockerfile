@@ -6,4 +6,8 @@ ADD . /go
 
 EXPOSE  8080
 
+# go get -v github.com/golang/dep
+# go install -v github.com/golang/dep/cmd/dep
+# go get -u github.com/golang/dep/cmd/dep これどこかに必要？ これ微妙
+
 CMD ["go", "run", "main.go"]
