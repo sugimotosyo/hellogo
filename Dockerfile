@@ -15,5 +15,7 @@ EXPOSE  8080
 RUN go get -v github.com/golang/dep
 RUN go install -v github.com/golang/dep/cmd/dep
 
+RUN dep ensure
+
 
 CMD ["go", "run", "main.go"]
