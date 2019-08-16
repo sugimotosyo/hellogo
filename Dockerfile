@@ -1,8 +1,8 @@
 FROM golang:1.10.0
 
 
-WORKDIR /go/src
-ADD . /go/src
+WORKDIR /go/src/github.com/sugimotosyo/hellogo
+ADD . /go/src/github.com/sugimotosyo/hellogo
 ENV GOPATH=/go
 
 
@@ -22,7 +22,7 @@ RUN which dep
 RUN ls
 RUN pwd
 
-
+RUN echo $GOPATH
 
 
 RUN dep ensure
