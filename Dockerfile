@@ -15,9 +15,4 @@ RUN go install -v github.com/golang/dep/cmd/dep
 
 RUN dep ensure
 
-RUN export -p 
-
-
-
-
 CMD ["go", "run", "main.go"]
