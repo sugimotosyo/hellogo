@@ -3,6 +3,8 @@ FROM golang:1.10.0
 
 WORKDIR /go/src
 ADD . /go/src
+ENV GOPATH=/go
+
 
 EXPOSE  8080
 
