@@ -15,7 +15,7 @@ RUN go install -v github.com/golang/dep/cmd/dep
 
 RUN dep ensure
 
-ENV export -p 
+RUN export -p 
 
 
 
