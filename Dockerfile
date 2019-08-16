@@ -17,8 +17,15 @@ RUN go install -v github.com/golang/dep/cmd/dep
 
 RUN which dep
 
+RUN ls
+RUN pws
+
+
+
 
 RUN dep ensure
+
+
 
 
 CMD ["go", "run", "main.go"]
