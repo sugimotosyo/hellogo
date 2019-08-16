@@ -41,7 +41,7 @@ func MyTweet(w http.ResponseWriter, r *http.Request) {
 	// }
 	// fmt.Println(twt)
 
-	fmt.Fprintf(w, "MyTweet "+os.Getenv("TWITTER_CONSUMER_KEY")+os.Getenv("CONTAINAR_NAME"))
+	fmt.Fprintf(w, "MyTweet =="+os.Getenv("TWITTER_CONSUMER_KEY")+"  == "+os.Getenv("CONTAINAR_NAME"))
 
 }
 
