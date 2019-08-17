@@ -57,7 +57,7 @@ func (i *Twitter) Post(c echo.Context) error {
 
 	//url
 	host := conf.BachelorHost
-	entry := "show?key="
+	entry := "show/index.html?key="
 	addURL, err := shortURL(host + entry + i.Body.Data.Key)
 	if err != nil {
 		fmt.Println(err)
