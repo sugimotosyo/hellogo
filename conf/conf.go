@@ -14,7 +14,7 @@ const (
 	SSLPort = ":443"
 
 	DateFormat   = "2006/01/02 15:04"
-	BachelorHost = "https://bachelor.enjoy-ps.com/"
+	BachelorHost = "https://bachelor-show.enjoy-ps.com/"
 )
 
 //本番と開発で書き換えが必要な値のデフォルトは開発環境にしておく
