@@ -21,7 +21,7 @@ const (
 var (
 	//アプリのホスト
 	AppHost    = "http://localhost"
-	BitlyToken = os.Getenv("BITLY_TOKEN")
+	BitlyToken = "672116007daee10d4f16dd31315b6e9941173df5"
 )
 
 func init() {
