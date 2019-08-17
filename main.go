@@ -3,50 +3,101 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"net/url"
 	"os"
 
-	"github.com/ChimeraCoder/anaconda"
+	"github.com/pkg/errors"
+	"github.com/sugimotosyo/hellogo/conf"
+	"github.com/sugimotosyo/hellogo/handler"
+
+	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
+	"github.com/labstack/gommon/log"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello, World ")
-}
+// @title LUCK API
+// @version 1.0
+// @description LUCKのAPIです。
 
+// @contact.name API Support
+// @contact.url https://en-joy.co.jp/contact/index/
+// @contact.email s.sugimoto@en-joy.co.jp
+
+// @license.name Apache 2.0
+// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
+
+// @host localhost
+// @BasePath /
 func main() {
-	http.HandleFunc("/", handler)
-	http.HandleFunc("/my_tweet", MyTweet)
-	http.ListenAndServe(":8080", nil)
+
+	//ログの設定
+	settingLogger()
+
+	//echoインスタンスの生成
+	var e = echo.New()
+
+	//cross
+	e.Use(middleware.CORS())
+
+	//Skipperの設定
+	e.Use(middleware.RecoverWithConfig(middleware.RecoverConfig{
+		Skipper: func(c echo.Context) bool {
+			log.Debugf("Skipper")
+			return false
+		},
+		DisableStackAll:   false,
+		DisablePrintStack: false,
+	}))
+
+	e.GET("/", func(c echo.Context) error {
+		return c.String(http.StatusOK, "check ok")
+	})
+
+	/************************
+	ユーザー
+	*************************/
+	twitter := handler.NewTwitter()
+	//ユーザ作成画面から他人のユーザを作成する
+	e.POST("/twitter/post", twitter.Post, Middle(twitter.MiddleFunc))
+
+	//listen
+	log.Fatal(e.Start(conf.Port))
 }
 
-func MyTweet(w http.ResponseWriter, r *http.Request) {
-	api := getTwitterApi()
+//SettingLogger ログの設定使用時は"github.com/labstack/gommon/log"をインポートの上そのまま使う。
+func settingLogger() {
 
-	v := url.Values{}
-	v.Set("count", "30")
+	//prefixを設定
+	log.SetPrefix(conf.ServiceName + os.Getenv("ENVIRONMENT"))
+	//出力レベルを設定
+	log.SetLevel(log.DEBUG)
+	//色表示にする。
+	log.EnableColor()
 
-	searchResult, _ := api.GetSearch("sugimotosyo", v)
-	for _, tweet := range searchResult.Statuses {
-		fmt.Println("-----------------------")
-		// fmt.Println(tweet)
-		fmt.Println(tweet.Text)
-		// str, _ := json.Marshal(&tweet)
-		// fmt.Println(string(str))
+	//example
+	log.Printf("log.Printf")
+	log.Debugf("log.Debugf")
+	log.Infof("log.Infof")
+	log.Warnf("log.Warnf")
+	log.Errorf("log.Errorf")
+
+}
+
+//Middle .
+func Middle(middleFunc func(echo.Context) error) echo.MiddlewareFunc {
+	return func(next echo.HandlerFunc) echo.HandlerFunc {
+		return func(c echo.Context) error {
+			err := middleFunc(c)
+			if err != nil {
+				fmt.Println("===================")
+				fmt.Printf("middle error %+v\n", err)
+				return errors.WithStack(err)
+			}
+			err = next(c)
+			if err != nil {
+				fmt.Println("--------------------")
+				fmt.Printf("error %+v\n", err)
+			}
+			return errors.WithStack(err)
+		}
 	}
-
-	// text := "TEST Hello from API."
-	// twt, err := api.PostTweet(text, nil)
-	// if err != nil {
-	// 	fmt.Println(err)
-	// }
-	// fmt.Println(twt)
-
-	fmt.Fprintf(w, "MyTweet =="+os.Getenv("TWITTER_CONSUMER_KEY")+"  == "+os.Getenv("CONTAINAR_NAME"))
-
-}
-
-func getTwitterApi() *anaconda.TwitterApi {
-	anaconda.SetConsumerKey(os.Getenv("TWITTER_CONSUMER_KEY"))
-	anaconda.SetConsumerSecret(os.Getenv("TWITTER_CONSUMER_SECRET"))
-	return anaconda.NewTwitterApi(os.Getenv("TWITTER_ACCESS_TOKEN"), os.Getenv("TWITTER_ACCESS_TOKEN_SECRET"))
 }

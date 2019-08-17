@@ -29,6 +29,18 @@
   name = "github.com/ChimeraCoder/anaconda"
   version = "2.0.0"
 
+[[constraint]]
+  name = "github.com/labstack/echo"
+  version = "3.3.10"
+
+[[constraint]]
+  name = "github.com/labstack/gommon"
+  version = "0.2.9"
+
+[[constraint]]
+  name = "github.com/pkg/errors"
+  version = "0.8.1"
+
 [prune]
   go-tests = true
   unused-packages = true
