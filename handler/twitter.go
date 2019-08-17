@@ -92,11 +92,15 @@ func getTwitterAPI(token, secret string) *anaconda.TwitterApi {
 
 //shortURL .
 func shortURL(urlStr string) (string, error) {
-	b := bitly.New(conf.BitlyToken)
+	fmt.Println("======")
+	// b := bitly.New(conf.BitlyToken)
+	b := bitly.New("672116007daee10d4f16dd31315b6e9941173df5")
+
 	link, err := b.Links.Shorten(urlStr)
 	if err != nil {
 		return urlStr, err
 	}
+	fmt.Println(link.URL)
 	return link.URL, nil
 }
 
