@@ -50,7 +50,7 @@ func (i *Twitter) Post(c echo.Context) error {
 	api := getTwitterAPI(i.Body.Data.Token, i.Body.Data.Secret)
 
 	// ハッシュタグを生成
-	hashTagStr := "#バチェラー3 #bachelor-card"
+	hashTagStr := "#バチェラー3 #BachelorCard"
 
 	//文章
 	sentence := i.Body.Data.Sentence
