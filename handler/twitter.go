@@ -50,7 +50,7 @@ func (i *Twitter) Post(c echo.Context) error {
 	api := getTwitterAPI(i.Body.Data.Token, i.Body.Data.Secret)
 
 	// ハッシュタグを生成
-	hashTagStr := "#バチェラー3"
+	hashTagStr := "#バチェラー3 #bachelor-card"
 
 	//文章
 	sentence := i.Body.Data.Sentence
@@ -63,7 +63,7 @@ func (i *Twitter) Post(c echo.Context) error {
 		fmt.Println(err)
 	}
 
-	tweetStr := fmt.Sprintf("%s\r\n%s\r\n%s\r\n", hashTagStr, sentence, addURL)
+	tweetStr := fmt.Sprintf("%s\r\n%s\r\n↓↓↓共有URL↓↓↓\r\n%s\r\n", hashTagStr, sentence, addURL)
 
 	// post
 	twt, err := api.PostTweet(tweetStr, nil)
